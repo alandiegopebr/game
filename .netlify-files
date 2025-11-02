@@ -1,0 +1,3 @@
+# Apenas arquivos necessários para frontend (Netlify)
+public/
+netlify.toml

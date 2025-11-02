@@ -80,13 +80,42 @@
 
 ## 🚀 Como Jogar
 
-1. Conecte ao servidor
-2. **Colete powerups** espalhados pela arena
-3. **Atire nos oponentes** para eliminá-los
-4. **Fique dentro da zona** segura
-5. **Seja o último sobrevivente!**
+### Localmente
+```bash
+npm install
+npm start
+# Abra http://localhost:3000
+```
 
-## 💡 Estratégias
+### Deploy em Produção
+
+**Frontend (Netlify):**
+1. Execute: `./prepare-netlify.sh`
+2. Arraste pasta `netlify-deploy` para [netlify.com](https://netlify.com)
+
+**Backend (Render/Heroku):**
+1. Deploy `server/index.js` em [render.com](https://render.com)
+2. Configure URL do WebSocket em `public/index.html`
+
+📖 **Instruções completas**: Veja [DEPLOY.md](DEPLOY.md)
+
+---
+
+## 🔧 Configuração
+
+### Conectar ao Servidor WebSocket
+
+Edite `public/index.html` e configure:
+
+```html
+<script>
+  window.WS_SERVER_URL = 'wss://seu-servidor.onrender.com';
+</script>
+```
+
+---
+
+## 🎯 Objetivos
 
 - **Boost estratégico**: Use boost para escapar ou perseguir
 - **Coleta de powerups**: Shields salvam vidas!

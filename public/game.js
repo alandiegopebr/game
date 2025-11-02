@@ -14,7 +14,11 @@ window.addEventListener('resize', () => {
   canvas.height = window.innerHeight;
 });
 
-const WS_URL = (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host;
+// WebSocket URL - configure WS_SERVER_URL antes de carregar este script
+// Exemplo: <script>window.WS_SERVER_URL = 'wss://seu-servidor.herokuapp.com';</script>
+const WS_URL = window.WS_SERVER_URL || 
+  (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host;
+
 const ws = new WebSocket(WS_URL);
 
 console.log('Connecting to:', WS_URL);
