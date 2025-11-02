@@ -1,0 +1,53 @@
+<!doctype html>
+<html lang="pt-br">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover" />
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="mobile-web-app-capable" content="yes" />
+  <title>🏎️ CarBattle Arena - Battle Royale</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div id="loading-screen">
+    <div class="spinner"></div>
+    <div class="loading-text">Conectando ao servidor...</div>
+  </div>
+  
+  <div id="hud">
+    <div id="info">Conectando...</div>
+    <div id="stats">
+      <div class="stat"><span class="label">HP:</span> <div class="bar"><div class="fill hp-fill"></div></div></div>
+      <div class="stat"><span class="label">Boost:</span> <div class="bar"><div class="fill boost-fill"></div></div></div>
+      <div class="stat"><span class="label">Shield:</span> <div class="bar"><div class="fill shield-fill"></div></div></div>
+      <div class="stat"><span class="label">Kills:</span> <span id="kills">0</span></div>
+    </div>
+    <div id="zone">Arena: <span id="arena-radius">600</span>m</div>
+  </div>
+  <div id="leaderboard">
+    <h3>🏆 Top Players</h3>
+    <div id="leader-list"></div>
+  </div>
+  <div id="controls">
+    <div>⬆️⬇️⬅️➡️ Dirigir</div>
+    <div>ESPAÇO Atirar</div>
+    <div>SHIFT Boost</div>
+  </div>
+  
+  <!-- Mobile Controls -->
+  <div id="mobile-controls">
+    <div id="joystick-area">
+      <div id="joystick-base">
+        <div id="joystick-stick"></div>
+      </div>
+    </div>
+    <div id="mobile-buttons">
+      <button id="btn-shoot" class="mobile-btn">🔫<br>ATIRAR</button>
+      <button id="btn-boost" class="mobile-btn">⚡<br>BOOST</button>
+    </div>
+  </div>
+  
+  <canvas id="game"></canvas>
+  <script src="game.js"></script>
+</body>
+</html>

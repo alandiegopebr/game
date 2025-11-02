@@ -1,0 +1,30 @@
+<!doctype html>
+<html lang="pt-br">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>Mirror Maze — Multiplayer</title>
+    <link rel="stylesheet" href="style.css" />
+    <script type="importmap">
+      {
+        "imports": {
+          "three": "/vendor/three/build/three.module.js"
+        }
+      }
+    </script>
+  </head>
+  <body>
+    <div id="hud">
+      <div id="info">Conectando...</div>
+      <div id="help">WASD / Setas: mover • Espaço: atacar • 1: usar poção</div>
+    <div id="help">WASD/Setas: mover • Espaço: atacar • Shift/E: dash • 1: poção • M: mudo</div>
+    <div id="bars"><span id="hud-xp">XP: --</span></div>
+    <div id="hearts" class="hearts"></div>
+  <div id="skills"><span id="hud-atk">ATK: --</span> | <span id="hud-dash">DASH: --</span></div>
+    </div>
+  <canvas id="minimap"></canvas>
+  <canvas id="game"></canvas>
+    <div id="inv" class="inventory"></div>
+    <script type="module" src="game.js"></script>
+  </body>
+</html>

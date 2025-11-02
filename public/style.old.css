@@ -1,0 +1,25 @@
+html, body { height: 100%; }
+body { margin: 0; font-family: Inter, Roboto, Arial, sans-serif; background: #071025; color: #e6eef6; overflow: hidden; }
+#hud { position: fixed; left: 12px; top: 12px; z-index: 10; background: rgba(4,8,16,0.5); padding: 8px 10px; border-radius: 8px; border:1px solid #152b3a; }
+#info { font-weight: 700; margin-bottom: 4px; }
+#help { font-size: 13px; color: #9fb6cc; }
+#bars { font-size: 13px; margin-top: 4px; color: #c7d7e6; }
+.hearts { margin-top: 6px; display: flex; gap: 4px; }
+.heart { width: 18px; height: 18px; background: #2b3042; border: 1px solid #3b4f64; border-radius: 3px; position: relative; overflow: hidden; }
+.heart-fill { position: absolute; left: 0; bottom: 0; height: 100%; background: #ef476f; }
+canvas { display: block; width: 100vw; height: 100vh; }
+#minimap { 
+  position: fixed; 
+  top: 16px; 
+  right: 16px; 
+  width: 160px; 
+  height: 160px; 
+  border: 2px solid #3b5c7a; 
+  border-radius: 8px; 
+  background: rgba(4,8,16,0.85); 
+  z-index: 11;
+  image-rendering: pixelated;
+}
+.inventory { position: fixed; left: 50%; transform: translateX(-50%); bottom: 16px; display: flex; gap: 8px; z-index: 10; }
+.slot { position: relative; flex: 0 0 120px; background: #0b1829; border: 1px solid #203549; border-radius: 8px; padding: 8px; text-align: center; color: #dbe7f3; }
+.slot .count { position: absolute; right: 6px; bottom: 4px; background: #11273a; border-radius: 10px; padding: 1px 6px; font-size: 11px; color: #a9bfd2; }
