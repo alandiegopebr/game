@@ -6,6 +6,56 @@ const app = express();
 app.use(compression());
 app.use(express.static('public'));
 
+// Health check endpoint para Render.com
+app.get('/', (req, res) => {
+  res.send(`
+    <html>
+      <head>
+        <title>CarBattle Arena Server</title>
+        <style>
+          body { 
+            font-family: Arial; 
+            background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+            color: #fff;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            text-align: center;
+          }
+          .container {
+            background: rgba(10, 14, 39, 0.8);
+            padding: 40px;
+            border-radius: 16px;
+            border: 2px solid rgba(100, 200, 255, 0.3);
+          }
+          h1 { color: #64c8ff; }
+          p { color: #9cb4d8; line-height: 1.8; }
+          .status { 
+            background: rgba(100, 200, 255, 0.2);
+            padding: 10px 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            color: #64c8ff;
+            font-weight: bold;
+          }
+        </style>
+      </head>
+      <body>
+        <div class="container">
+          <h1>🏎️ CarBattle Arena Server</h1>
+          <div class="status">✅ Servidor Online</div>
+          <p>Servidor WebSocket rodando na porta ${server.address().port}</p>
+          <p>Jogadores conectados: ${world.players.size}</p>
+          <p><strong>Use este servidor no seu frontend:</strong></p>
+          <p><code>wss://${req.get('host')}</code></p>
+        </div>
+      </body>
+    </html>
+  `);
+});
+
 const server = app.listen(process.env.PORT || 3000, () => {
   console.log('🏎️  CarBattle Arena server on port', server.address().port);
 });

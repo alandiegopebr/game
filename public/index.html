@@ -10,21 +10,43 @@
   
   <!-- Configure o servidor WebSocket aqui -->
   <script>
-    // IMPORTANTE: Substitua pela URL do seu servidor WebSocket
-    // Exemplos:
-    // - Servidor local: não precisa configurar (usa o mesmo host)
-    // - Heroku: window.WS_SERVER_URL = 'wss://seu-app.herokuapp.com';
-    // - Render: window.WS_SERVER_URL = 'wss://seu-app.onrender.com';
-    // - Railway: window.WS_SERVER_URL = 'wss://seu-app.railway.app';
+    // ⚠️ ATENÇÃO: VOCÊ PRECISA CONFIGURAR ISTO! ⚠️
+    // 
+    // O Netlify serve APENAS o frontend (arquivos HTML/JS/CSS)
+    // Você PRECISA fazer deploy do SERVIDOR em outro lugar!
+    //
+    // PASSO 1: Deploy do servidor WebSocket
+    // Use um destes serviços (GRÁTIS):
+    // - Render.com: https://render.com (RECOMENDADO)
+    // - Railway.app: https://railway.app
+    // - Fly.io: https://fly.io
+    //
+    // PASSO 2: Configure a URL abaixo
+    // Exemplo: window.WS_SERVER_URL = 'wss://seu-servidor.onrender.com';
+    //
+    // ⚠️ SEM ISTO O JOGO NÃO FUNCIONA! ⚠️
     
-    // Descomente e configure abaixo:
-    // window.WS_SERVER_URL = 'wss://seu-servidor-websocket.com';
+    // DESCOMENTE E CONFIGURE AQUI:
+    // window.WS_SERVER_URL = 'wss://seu-servidor-websocket.onrender.com';
+    
+    // Se não configurar, vai mostrar um erro explicativo
+    if (!window.WS_SERVER_URL) {
+      console.error('❌ SERVIDOR WEBSOCKET NÃO CONFIGURADO!');
+      console.error('📖 Leia as instruções no index.html');
+      console.error('🚀 Deploy o servidor em https://render.com');
+      console.error('⚙️ Configure window.WS_SERVER_URL com a URL do servidor');
+    }
   </script>
 </head>
 <body>
   <div id="loading-screen">
     <div class="spinner"></div>
     <div class="loading-text">Conectando ao servidor...</div>
+    <div id="error-help" style="display: none; margin-top: 20px;">
+      <a href="CONFIGURAR.html" style="color: #64c8ff; text-decoration: none; font-weight: 700; background: rgba(100, 200, 255, 0.2); padding: 12px 24px; border-radius: 8px; display: inline-block;">
+        📖 Ver Instruções de Configuração
+      </a>
+    </div>
   </div>
   
   <div id="hud">

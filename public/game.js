@@ -19,6 +19,25 @@ window.addEventListener('resize', () => {
 const WS_URL = window.WS_SERVER_URL || 
   (location.protocol === 'https:' ? 'wss://' : 'ws://') + location.host;
 
+// Verificar se foi configurado corretamente
+if (!window.WS_SERVER_URL && (location.host.includes('netlify') || location.host.includes('vercel'))) {
+  alert('⚠️ ERRO DE CONFIGURAÇÃO\n\n' +
+        'Você precisa fazer deploy do SERVIDOR primeiro!\n\n' +
+        '1. Acesse https://render.com\n' +
+        '2. Deploy do repositório (pasta server/)\n' +
+        '3. Configure window.WS_SERVER_URL no index.html\n\n' +
+        'Clique em "Ver Instruções" na tela para ajuda completa.');
+  
+  // Mostrar erro na tela também
+  if (loadingScreen) {
+    loadingScreen.querySelector('.loading-text').innerHTML = 
+      '❌ Servidor não configurado!<br><br>' +
+      'Configure window.WS_SERVER_URL no index.html';
+    const helpLink = document.getElementById('error-help');
+    if (helpLink) helpLink.style.display = 'block';
+  }
+}
+
 const ws = new WebSocket(WS_URL);
 
 console.log('Connecting to:', WS_URL);
@@ -102,9 +121,20 @@ ws.addEventListener('open', () => {
 
 ws.addEventListener('error', (err) => {
   console.error('WebSocket error:', err);
+  console.error('');
+  console.error('🔧 SOLUÇÃO:');
+  console.error('1. Faça deploy do servidor em https://render.com');
+  console.error('2. Configure window.WS_SERVER_URL no index.html');
+  console.error('3. Veja CONFIGURAR.html para instruções completas');
+  console.error('');
+  
   info.textContent = 'Erro de conexão!';
   if (loadingScreen) {
-    loadingScreen.querySelector('.loading-text').textContent = 'Erro ao conectar. Recarregue a página.';
+    loadingScreen.querySelector('.loading-text').innerHTML = 
+      '❌ Falha ao conectar<br><br>' +
+      'Verifique se o servidor está rodando';
+    const helpLink = document.getElementById('error-help');
+    if (helpLink) helpLink.style.display = 'block';
   }
 });
 

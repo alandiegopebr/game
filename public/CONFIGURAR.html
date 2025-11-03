@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>⚠️ Configuração Necessária - CarBattle Arena</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #fff;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: rgba(10, 14, 39, 0.8);
+      border-radius: 16px;
+      padding: 40px;
+      border: 2px solid rgba(255, 107, 157, 0.3);
+    }
+    h1 { color: #ff6b9d; margin-bottom: 20px; font-size: 32px; }
+    h2 { color: #64c8ff; margin: 30px 0 15px; font-size: 24px; }
+    p { line-height: 1.8; margin-bottom: 15px; color: #9cb4d8; }
+    .warning {
+      background: rgba(255, 107, 157, 0.2);
+      border-left: 4px solid #ff6b9d;
+      padding: 15px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .step {
+      background: rgba(100, 200, 255, 0.1);
+      border-left: 4px solid #64c8ff;
+      padding: 15px;
+      margin: 15px 0;
+      border-radius: 4px;
+    }
+    code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #ffd700;
+      font-family: 'Courier New', monospace;
+    }
+    pre {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    pre code {
+      background: none;
+      padding: 0;
+      color: #64c8ff;
+    }
+    a {
+      color: #64c8ff;
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a:hover { text-decoration: underline; }
+    .button {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6b9d, #ff3366);
+      color: white;
+      padding: 12px 24px;
+      border-radius: 8px;
+      text-decoration: none;
+      font-weight: 700;
+      margin: 10px 10px 10px 0;
+      transition: transform 0.2s;
+    }
+    .button:hover { transform: scale(1.05); }
+    .button.secondary {
+      background: linear-gradient(135deg, #64c8ff, #4a9eff);
+    }
+    ul { margin-left: 20px; color: #9cb4d8; line-height: 1.8; }
+    li { margin: 8px 0; }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>⚠️ Configuração Necessária</h1>
+    
+    <div class="warning">
+      <strong>❌ O jogo não funciona ainda!</strong><br>
+      Você fez deploy apenas do <strong>frontend</strong> (interface).<br>
+      Falta fazer deploy do <strong>backend</strong> (servidor WebSocket).
+    </div>
+
+    <h2>🎯 O Que Você Precisa Fazer</h2>
+    
+    <div class="step">
+      <strong>📍 PASSO 1: Deploy do Servidor WebSocket</strong>
+      <p>O servidor de jogo precisa rodar em um serviço separado que suporte WebSocket.</p>
+      
+      <p><strong>Recomendado: Render.com (100% grátis)</strong></p>
+      <ol>
+        <li>Acesse <a href="https://render.com" target="_blank">render.com</a></li>
+        <li>Faça login/cadastro (pode usar GitHub)</li>
+        <li>Clique em <strong>"New +"</strong> → <strong>"Web Service"</strong></li>
+        <li>Conecte este repositório do GitHub</li>
+        <li>Configure:
+          <ul>
+            <li><strong>Name:</strong> <code>carbattle-server</code></li>
+            <li><strong>Environment:</strong> <code>Node</code></li>
+            <li><strong>Build Command:</strong> <code>npm install</code></li>
+            <li><strong>Start Command:</strong> <code>node server/index.js</code></li>
+            <li><strong>Plan:</strong> Free</li>
+          </ul>
+        </li>
+        <li>Clique em <strong>"Create Web Service"</strong></li>
+        <li><strong>ANOTE A URL!</strong> Algo como: <code>https://carbattle-server-xxxx.onrender.com</code></li>
+      </ol>
+
+      <p>⏱️ <em>Aguarde cerca de 5 minutos para o deploy completar</em></p>
+    </div>
+
+    <div class="step">
+      <strong>📍 PASSO 2: Configure a URL no index.html</strong>
+      
+      <p>Edite o arquivo <code>index.html</code> (ou <code>netlify-deploy/index.html</code>):</p>
+      
+      <pre><code>&lt;script&gt;
+  // Descomente e configure com a URL do Render:
+  window.WS_SERVER_URL = 'wss://carbattle-server-xxxx.onrender.com';
+&lt;/script&gt;</code></pre>
+
+      <p><strong>⚠️ IMPORTANTE:</strong></p>
+      <ul>
+        <li>Use <code>wss://</code> (não <code>https://</code>)</li>
+        <li>Copie a URL exata do Render</li>
+        <li>Não esqueça o <code>;</code> no final</li>
+      </ul>
+    </div>
+
+    <div class="step">
+      <strong>📍 PASSO 3: Faça Deploy Novamente</strong>
+      
+      <p>Depois de configurar o <code>index.html</code>:</p>
+      <ul>
+        <li><strong>Netlify:</strong> Arraste a pasta <code>netlify-deploy</code> novamente</li>
+        <li>OU faça commit e push para o GitHub (se conectado via Git)</li>
+      </ul>
+    </div>
+
+    <h2>✅ Checklist</h2>
+    <ul>
+      <li>☐ Backend deployado no Render</li>
+      <li>☐ URL do servidor anotada</li>
+      <li>☐ <code>index.html</code> configurado com <code>WS_SERVER_URL</code></li>
+      <li>☐ Deploy atualizado no Netlify</li>
+      <li>☐ Testado e funcionando!</li>
+    </ul>
+
+    <h2>📚 Precisa de Ajuda?</h2>
+    <p>Leia a documentação completa nos arquivos do projeto:</p>
+    <ul>
+      <li><strong>GUIA-RAPIDO.md</strong> - Instruções passo a passo detalhadas</li>
+      <li><strong>DEPLOY.md</strong> - Guia técnico completo</li>
+      <li><strong>README.md</strong> - Sobre o jogo</li>
+    </ul>
+
+    <h2>🔗 Links Úteis</h2>
+    <a href="https://render.com" target="_blank" class="button">🚀 Render.com</a>
+    <a href="https://github.com/alandiegopebr/game/blob/main/GUIA-RAPIDO.md" target="_blank" class="button secondary">📖 Guia Rápido</a>
+
+    <h2>💡 Por Que Isso é Necessário?</h2>
+    <p>O Netlify serve apenas <strong>arquivos estáticos</strong> (HTML, CSS, JS). Ele não pode executar servidores Node.js ou WebSocket.</p>
+    <p>Por isso, você precisa:</p>
+    <ul>
+      <li><strong>Netlify:</strong> Para o frontend (interface do jogo)</li>
+      <li><strong>Render/Heroku/Railway:</strong> Para o backend (lógica multiplayer)</li>
+    </ul>
+
+    <div class="warning">
+      <strong>🎮 Depois de configurar, o jogo vai funcionar perfeitamente!</strong><br>
+      Multiplayer em tempo real, mobile e desktop, tudo grátis! 🚀
+    </div>
+  </div>
+</body>
+</html>

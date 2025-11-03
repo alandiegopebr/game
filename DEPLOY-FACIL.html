@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🚀 Deploy CarBattle Arena</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #0a0e27 0%, #1a1f3a 100%);
+      color: #fff;
+      padding: 40px 20px;
+      min-height: 100vh;
+    }
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    .card {
+      background: rgba(10, 14, 39, 0.8);
+      border-radius: 16px;
+      padding: 40px;
+      border: 2px solid rgba(100, 200, 255, 0.3);
+      margin-bottom: 30px;
+    }
+    h1 { color: #64c8ff; font-size: 36px; margin-bottom: 10px; }
+    h2 { color: #ff6b9d; font-size: 24px; margin: 30px 0 15px; }
+    h3 { color: #64c8ff; font-size: 20px; margin: 20px 0 10px; }
+    p { color: #9cb4d8; line-height: 1.8; margin-bottom: 15px; }
+    .big-button {
+      display: inline-block;
+      background: linear-gradient(135deg, #ff6b9d, #ff3366);
+      color: white;
+      padding: 20px 40px;
+      border-radius: 12px;
+      text-decoration: none;
+      font-weight: 700;
+      font-size: 20px;
+      margin: 20px 10px;
+      transition: transform 0.2s;
+      text-align: center;
+    }
+    .big-button:hover { transform: scale(1.05); }
+    .big-button.blue {
+      background: linear-gradient(135deg, #64c8ff, #4a9eff);
+    }
+    .step {
+      background: rgba(100, 200, 255, 0.1);
+      border-left: 4px solid #64c8ff;
+      padding: 20px;
+      margin: 20px 0;
+      border-radius: 4px;
+    }
+    .step-number {
+      display: inline-block;
+      background: #64c8ff;
+      color: #0a0e27;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      text-align: center;
+      line-height: 30px;
+      font-weight: 700;
+      margin-right: 10px;
+    }
+    code {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 3px 8px;
+      border-radius: 4px;
+      color: #ffd700;
+      font-family: 'Courier New', monospace;
+    }
+    pre {
+      background: rgba(0, 0, 0, 0.5);
+      padding: 15px;
+      border-radius: 8px;
+      overflow-x: auto;
+      margin: 15px 0;
+    }
+    pre code { background: none; padding: 0; color: #64c8ff; }
+    .success {
+      background: rgba(100, 200, 100, 0.2);
+      border-left: 4px solid #64ff64;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 20px 0;
+      color: #a0ffa0;
+    }
+    .warning {
+      background: rgba(255, 215, 0, 0.2);
+      border-left: 4px solid #ffd700;
+      padding: 15px;
+      border-radius: 4px;
+      margin: 20px 0;
+      color: #ffd700;
+    }
+    ul { margin-left: 30px; line-height: 2; }
+    li { margin: 8px 0; color: #9cb4d8; }
+    .video-placeholder {
+      background: rgba(0, 0, 0, 0.3);
+      padding: 60px;
+      text-align: center;
+      border-radius: 8px;
+      margin: 20px 0;
+      border: 2px dashed rgba(100, 200, 255, 0.3);
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="card">
+      <h1>🚀 Deploy Simplificado - CarBattle Arena</h1>
+      <p style="font-size: 18px;">Siga estes passos e seu jogo estará online em ~10 minutos!</p>
+    </div>
+
+    <div class="card">
+      <h2>📋 Checklist Rápido</h2>
+      <ul style="font-size: 16px; line-height: 2.5;">
+        <li>☐ Deploy do servidor no Render (~5 min)</li>
+        <li>☐ Configurar URL no index.html (~1 min)</li>
+        <li>☐ Deploy do frontend no Netlify (~2 min)</li>
+        <li>☐ Testar e jogar! 🎮</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>PASSO 1: Deploy do Servidor (Backend)</h2>
+      
+      <div class="step">
+        <p><span class="step-number">1</span><strong>Clique no botão abaixo para fazer deploy automático:</strong></p>
+        <a href="https://dashboard.render.com/select-repo?type=web" target="_blank" class="big-button">
+          🚀 Deploy no Render.com
+        </a>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">2</span><strong>No Render, conecte este repositório:</strong></p>
+        <p><code>https://github.com/alandiegopebr/game</code></p>
+        <p style="margin-top: 10px; font-size: 14px;">Se não aparecer, clique em "Configure account" e autorize o GitHub.</p>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">3</span><strong>Configure o serviço:</strong></p>
+        <ul>
+          <li><strong>Name:</strong> <code>carbattle-server</code> (ou qualquer nome)</li>
+          <li><strong>Environment:</strong> <code>Node</code></li>
+          <li><strong>Build Command:</strong> <code>npm install</code></li>
+          <li><strong>Start Command:</strong> <code>node server/index.js</code></li>
+          <li><strong>Plan:</strong> Free (deixe selecionado)</li>
+        </ul>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">4</span><strong>Clique em "Create Web Service"</strong></p>
+        <p>Aguarde ~3-5 minutos para o deploy completar.</p>
+      </div>
+
+      <div class="success">
+        <strong>✅ Quando terminar:</strong><br>
+        A URL do servidor aparecerá no topo da página.<br>
+        Exemplo: <code>https://carbattle-server-xyz123.onrender.com</code><br><br>
+        <strong>📋 COPIE ESTA URL!</strong> Você vai precisar no próximo passo.
+      </div>
+
+      <div class="warning">
+        <strong>⚠️ Importante:</strong> Você pode verificar se o servidor está funcionando abrindo a URL no navegador. Deve mostrar "✅ Servidor Online".
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>PASSO 2: Configurar o Frontend</h2>
+
+      <div class="step">
+        <p><span class="step-number">1</span><strong>Abra o arquivo:</strong> <code>netlify-deploy/index.html</code></p>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">2</span><strong>Procure por esta linha (~linha 18):</strong></p>
+        <pre><code>// window.WS_SERVER_URL = 'wss://seu-servidor-websocket.com';</code></pre>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">3</span><strong>Descomente e substitua pela URL do Render:</strong></p>
+        <pre><code>window.WS_SERVER_URL = 'wss://carbattle-server-xyz123.onrender.com';</code></pre>
+        <div class="warning">
+          <strong>⚠️ ATENÇÃO:</strong>
+          <ul>
+            <li>Troque <code>https://</code> por <code>wss://</code></li>
+            <li>Use a URL EXATA que você copiou do Render</li>
+            <li>Não esqueça o <code>;</code> no final</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">4</span><strong>Salve o arquivo!</strong></p>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>PASSO 3: Deploy do Frontend</h2>
+
+      <div class="step">
+        <p><span class="step-number">1</span><strong>Acesse o Netlify:</strong></p>
+        <a href="https://app.netlify.com/drop" target="_blank" class="big-button blue">
+          🌐 Abrir Netlify Drop
+        </a>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">2</span><strong>Arraste a pasta <code>netlify-deploy</code> para o Netlify</strong></p>
+        <p>A pasta está na raiz do projeto. Arraste e solte na área indicada.</p>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">3</span><strong>Aguarde o upload (~30 segundos)</strong></p>
+      </div>
+
+      <div class="success">
+        <strong>✅ Deploy Completo!</strong><br>
+        O Netlify vai gerar uma URL tipo:<br>
+        <code>https://seu-site-xyz123.netlify.app</code><br><br>
+        <strong>🎮 Abra esta URL e jogue!</strong>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🎯 Teste Final</h2>
+
+      <div class="step">
+        <p><span class="step-number">1</span><strong>Abra a URL do Netlify no navegador</strong></p>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">2</span><strong>Aguarde conectar</strong></p>
+        <p>Na primeira conexão pode demorar ~30-60 segundos (servidor "acordando").</p>
+      </div>
+
+      <div class="step">
+        <p><span class="step-number">3</span><strong>Deve aparecer:</strong> <code>"Você: pXXX"</code></p>
+      </div>
+
+      <div class="success">
+        <strong>🎉 Sucesso!</strong><br>
+        Seu jogo está online e funcionando!<br>
+        Compartilhe a URL do Netlify com seus amigos! 🚀
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>🐛 Problemas Comuns</h2>
+
+      <h3>❌ "Conectando..." infinito</h3>
+      <ul>
+        <li>Verifique se configurou <code>WS_SERVER_URL</code> corretamente</li>
+        <li>Use <code>wss://</code> (não <code>https://</code>)</li>
+        <li>Aguarde 1-2 minutos (servidor pode estar iniciando)</li>
+        <li>Abra o Console (F12) para ver erros</li>
+      </ul>
+
+      <h3>❌ Servidor não conecta</h3>
+      <ul>
+        <li>Verifique se o deploy do Render completou</li>
+        <li>Abra a URL do Render no navegador (deve mostrar "Servidor Online")</li>
+        <li>Veja os logs no Render Dashboard</li>
+      </ul>
+
+      <h3>⏱️ Demora muito para conectar</h3>
+      <ul>
+        <li>Normal! Render Free tier "dorme" após 15min inativo</li>
+        <li>Primeira conexão: ~30-60 segundos</li>
+        <li>Conexões seguintes: instantâneas (se houver jogadores online)</li>
+      </ul>
+    </div>
+
+    <div class="card">
+      <h2>📚 Recursos Adicionais</h2>
+      <ul>
+        <li><strong>GUIA-RAPIDO.md</strong> - Instruções passo a passo detalhadas</li>
+        <li><strong>DEPLOY.md</strong> - Guia técnico completo</li>
+        <li><strong>CONFIGURAR.html</strong> - Página de ajuda visual</li>
+        <li><strong>SOLUCAO-ERRO.md</strong> - Soluções para erros comuns</li>
+      </ul>
+    </div>
+
+    <div class="card" style="text-align: center; border-color: rgba(255, 215, 0, 0.3);">
+      <h2 style="color: #ffd700;">🎮 Divirta-se!</h2>
+      <p style="font-size: 18px;">Seu jogo CarBattle Arena está pronto para o mundo!</p>
+      <p>Multiplayer • Battle Royale • Desktop & Mobile</p>
+      <p style="margin-top: 20px; color: #64c8ff; font-size: 14px;">
+        100% gratuito • Sem limites de jogadores • Funciona em qualquer dispositivo
+      </p>
+    </div>
+  </div>
+</body>
+</html>
